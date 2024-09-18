@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone')->nullable();
             $table->text('comment')->nullable();
-            $table->boolean('del_flag')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
