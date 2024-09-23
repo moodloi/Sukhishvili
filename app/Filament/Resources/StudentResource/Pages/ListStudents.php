@@ -16,11 +16,16 @@ class ListStudents extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()
+                ->icon('heroicon-c-user-plus'),
             Actions\ImportAction::make()
-                ->importer(StudentImporter::class),
+                ->importer(StudentImporter::class)
+                ->color('accent')
+                ->icon('heroicon-c-cloud-arrow-up'),
             Actions\ExportAction::make()
                 ->exporter(StudentExporter::class)
+                ->color('success')
+                ->icon('heroicon-c-arrow-down-circle')
         ];
     }
 }
