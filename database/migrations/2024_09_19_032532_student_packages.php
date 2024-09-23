@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('manager_service_center', function (Blueprint $table) {
+        Schema::create('student_packages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('service_center_id')->constrained()->onDelete('cascade');
-            $table->date('valid_from');
-            $table->date('valid_to')->default('2999-12-31');
+            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
+            $table->foreignId('package_id')->constrained()->onDelete('cascade');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->enum('status', ['active', 'expired', 'cancelled'])->default('active');
             $table->text('comment')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('manager_service_center');
+        Schema::dropIfExists('student_packages');
     }
 };

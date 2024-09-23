@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('group_id')->constrained()->onDelete('cascade');
             $table->date('valid_from');
-            $table->date('valid_to')->default('2999-01-01');
+            $table->date('valid_to')->default('2999-12-31');
             $table->text('comment')->nullable();
             $table->timestamps();
             $table->softDeletes();

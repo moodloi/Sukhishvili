@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('manager_service_center', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('service_center_id')->constrained()->onDelete('cascade');
-            $table->date('valid_from');
-            $table->date('valid_to')->default('2999-12-31');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('pid')->index();
+            $table->date('date_of_birth');
+            $table->enum('gender', ['male', 'female'])->nullable();
             $table->text('comment')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('manager_service_center');
+        Schema::dropIfExists('students');
     }
 };

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('student_group', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->foreignId('group_id')->constrained()->onDelete('cascade');
             $table->date('valid_from');
-            $table->date('valid_to')->default('2999-01-01');
+            $table->date('valid_to')->default('2999-12-31');
             $table->timestamps();
             $table->softDeletes();
         });
