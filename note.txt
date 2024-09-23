@@ -1,0 +1,25 @@
+php artisan permission:cache-reset
+php artisan route:clear
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
+php artisan optimize:clear
+composer dump-autoload
+composer update
+
+
+
+
+php artisan permission:cache-reset
+php artisan route:clear
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
+php artisan optimize:clear
+composer2 dump-autoload
+composer2 update
+
+
+php artisan filament:optimize-clear
+
+php artisan queue:work
