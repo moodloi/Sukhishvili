@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\StudentResource\Pages;
 
+use App\Filament\Exports\StudentExporter;
 use App\Filament\Resources\StudentResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -18,6 +19,8 @@ class ListStudents extends ListRecords
             Actions\CreateAction::make(),
             Actions\ImportAction::make()
                 ->importer(StudentImporter::class),
+            Actions\ExportAction::make()
+                ->exporter(StudentExporter::class)
         ];
     }
 }

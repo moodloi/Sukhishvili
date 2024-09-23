@@ -34,12 +34,12 @@ class StudentResource extends Resource
                     ->required(),
                 Forms\Components\DatePicker::make('date_of_birth')
                     ->required(),
-               Select::make('gender')
-                ->options([
-                    'male' => 'male',
-                    'female' => 'female',
+                Select::make('gender')
+                    ->options([
+                        'male' => 'male',
+                        'female' => 'female',
 
-                ]),
+                    ]),
                 Forms\Components\Textarea::make('comment')
                     ->columnSpanFull(),
             ]);
@@ -74,14 +74,18 @@ class StudentResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(), 
+                Tables\Actions\RestoreAction::make(), 
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(), 
+                    Tables\Actions\RestoreBulkAction::make(), 
                 ]),
             ]);
     }
@@ -100,5 +104,13 @@ class StudentResource extends Resource
             'create' => Pages\CreateStudent::route('/create'),
             'edit' => Pages\EditStudent::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
     }
 }
