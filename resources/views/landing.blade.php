@@ -4157,7 +4157,7 @@
                 </div>
                 <div class="top_bar_right ">
                   <div class="top_bar_right_wrapper">
-                    <a href="http://account.insights.ge/" class="button action_button top-bar-right-button " target="_blank">ანგარიში</a>
+                    <a href="https://sukhishvili.insights.ge/mng/" class="button action_button top-bar-right-button " target="_blank">ანგარიში</a>
                   </div>
                 </div>
                 <div class="search_wrapper">

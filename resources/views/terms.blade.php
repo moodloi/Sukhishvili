@@ -4269,7 +4269,7 @@
                 </div>
                 <div class="top_bar_right ">
                   <div class="top_bar_right_wrapper">
-                    <a href="http://account.insights.ge/" class="button action_button top-bar-right-button " target="_blank">ანგარიში</a>
+                    <a href="https://sukhishvili.insights.ge/mng/" class="button action_button top-bar-right-button " target="_blank">ანგარიში</a>
                   </div>
                 </div>
                 <div class="search_wrapper">
@@ -4453,7 +4453,7 @@
         </a>
       </div>
       <div class="extras">
-        <a href="http://account.insights.ge/" class="button action_button" target="_blank">ანგარიში</a>
+        <a href="https://sukhishvili.insights.ge/mng/" class="button action_button" target="_blank">ანგარიში</a>
         <div class="extras-wrapper" role="navigation" aria-label="extras menu"></div>
       </div>
       <div class="lang-wrapper" role="navigation" aria-label="language menu"></div>
