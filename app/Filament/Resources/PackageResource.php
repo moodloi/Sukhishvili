@@ -19,25 +19,36 @@ class PackageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-s-tag';
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
+    public static ?string $label = 'პაკეტები';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('სახელი')
                     ->required(),
                 Forms\Components\Textarea::make('description')
+                    ->label('აღწერა')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('price')
+                    ->label('ფასი')
                     ->required()
                     ->numeric()
                     ->prefix('₾'),
                 Forms\Components\Toggle::make('is_active')
+                    ->label('აქტიურია')
                     ->required(),
                 Forms\Components\Textarea::make('comment')
+                    ->label('კომენტარი')
                     ->columnSpanFull(),
                 Forms\Components\DatePicker::make('valid_from')
+                    ->label('ვალიდურობის საწყისი')
                     ->required(),
                 Forms\Components\DatePicker::make('valid_to')
+                    ->label('ვალიდურობის დასასრული')
                     ->required(),
             ]);
     }
@@ -47,34 +58,37 @@ class PackageResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label('სახელი')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('price')
-                    ->money("GEL")
-                    ->sortable(),
+                    ->label('ფასი')
+                    ->money("GEL"),
                 Tables\Columns\TextColumn::make('description')
-                    ->searchable()
-                    ->sortable(),
+                    ->label('აღწერა')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('comment')
+                    ->label('კომენტარი')
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->label('აქტიურია')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('valid_from')
-                    ->date()
-                    ->sortable(),
+                    ->label('ვალიდურობის საწყისი')
+                    ->date(),
                 Tables\Columns\TextColumn::make('valid_to')
-                    ->date()
-                    ->sortable(),
+                    ->label('ვალიდურობის დასასრული')
+                    ->date(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('შეიქმნა')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('განახლდა')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('deleted_at')
+                    ->label('წაიშალა')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

@@ -20,23 +20,32 @@ class ServiceCenterResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-s-home';
 
+    protected static bool $hasTitleCaseModelLabel = false;
+
+    public static ?string $label = 'ფილიალები';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Select::make('business')
+                    ->label('ბიზნესი')
                     ->required()
                     ->options([
                         'ცეკვის აკადემია სუხიშვილები - 1' => 'ცეკვის აკადემია სუხიშვილები - 1',
                         'სუხიშვილების აკადემია' => 'სუხიშვილების აკადემია',
                     ]),
                 Forms\Components\TextInput::make('name')
+                    ->label('დასახელება')
                     ->required(),
                 Forms\Components\TextInput::make('address')
+                    ->label('მისამართი')
                     ->required(),
                 Forms\Components\TextInput::make('phone')
+                    ->label('ტელეფონი')
                     ->tel(),
                 Forms\Components\Textarea::make('comment')
+                    ->label('კომენტარი')
                     ->columnSpanFull(),
             ]);
     }
@@ -46,24 +55,28 @@ class ServiceCenterResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('business')
+                    ->label('ბიზნესი')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->label('დასახელება')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
+                    ->label('მისამართი')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
+                    ->label('ტელეფონი')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('deleted_at')
+                    ->label('წაიშალა')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('შეიქმნა')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('განახლდა')
                     ->dateTime()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

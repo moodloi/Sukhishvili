@@ -10,7 +10,7 @@ return [
 
         'records_per_page' => [
 
-            'label' => 'ნაჩვენებია',
+            'label' => 'ჩანაწერები',
 
             'options' => [
                 'all' => 'ყველა',
